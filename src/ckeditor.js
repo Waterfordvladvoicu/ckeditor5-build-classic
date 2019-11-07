@@ -11,73 +11,84 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
-import Heading from '@ckeditor/ckeditor5-heading/src/heading';
 import Image from '@ckeditor/ckeditor5-image/src/image';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
-import Link from '@ckeditor/ckeditor5-link/src/link';
+import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
 import List from '@ckeditor/ckeditor5-list/src/list';
-import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
-import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
-import Table from '@ckeditor/ckeditor5-table/src/table';
-import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import FontFamily from '@ckeditor/ckeditor5-font/src/fontfamily';
+import FontSize from '@ckeditor/ckeditor5-font/src/fontsize';
+// import CustomElementPlugin from 'ckeditor5-custom-element/src/customelement';
+// import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+// import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
+// import imageIcon from '@ckeditor/ckeditor5-core/theme/icons/check.svg';
+// import EventEmitter from 'events';
+// import ClickObserver from '@ckeditor/ckeditor5-engine/src/view/observer/clickobserver';
 
-export default class ClassicEditor extends ClassicEditorBase {}
+export default class ClassicWaterfordEditor extends ClassicEditorBase {}
+// class TestPlugin extends Plugin {
+// 	init() {
+// 		const editor = this.editor;
+// 		editor.ui.componentFactory.add( 'test', locale => {
+// 			const view = new ButtonView( locale );
+// 			view.set( {
+// 				label: 'Test',
+// 				icon: imageIcon,
+// 				tooltip: true
+// 			} );
+// 			view.on( 'execute', () => {
+// 				editor.fire( 'testEvent' );
+// 			} );
+// 			return view;
+// 		} );
+// 	}
+// }
 
 // Plugins to include in the build.
-ClassicEditor.builtinPlugins = [
+ClassicWaterfordEditor.builtinPlugins = [
 	Essentials,
 	UploadAdapter,
 	Autoformat,
 	Bold,
 	Italic,
-	BlockQuote,
+	Underline,
 	CKFinder,
 	EasyImage,
-	Heading,
 	Image,
 	ImageCaption,
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload,
 	Indent,
-	Link,
+	IndentBlock,
 	List,
-	MediaEmbed,
-	Paragraph,
-	PasteFromOffice,
-	Table,
-	TableToolbar
+	FontFamily,
+	FontSize
 ];
 
 // Editor configuration.
-ClassicEditor.defaultConfig = {
+ClassicWaterfordEditor.defaultConfig = {
 	toolbar: {
 		items: [
-			'heading',
-			'|',
+			'fontFamily',
+			'fontSize',
 			'bold',
 			'italic',
-			'link',
+			'underline',
+			'|',
+			'imageUpload',
+			'|',
 			'bulletedList',
 			'numberedList',
 			'|',
-			'indent',
 			'outdent',
-			'|',
-			'imageUpload',
-			'blockQuote',
-			'insertTable',
-			'mediaEmbed',
-			'undo',
-			'redo'
+			'indent',
 		]
 	},
 	image: {
@@ -88,13 +99,34 @@ ClassicEditor.defaultConfig = {
 			'imageTextAlternative'
 		]
 	},
-	table: {
-		contentToolbar: [
-			'tableColumn',
-			'tableRow',
-			'mergeTableCells'
+	fontSize: {
+		options: [
+			9,
+			11,
+			13,
+			'default',
+			17,
+			19,
+			21,
+			23,
+			25,
+			27,
+			29,
+			31,
+			33,
+			35
 		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
 };
+// eslint-disable-next-line no-undef
+ClassicWaterfordEditor.create( document.querySelector( '#editor' ) )
+	.then( editor => {
+		// eslint-disable-next-line no-undef
+		window.editor = editor;
+	} )
+	.catch( err => {
+		// eslint-disable-next-line no-undef
+		console.error( err.stack );
+	} );
