@@ -24,10 +24,10 @@ import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import FontFamily from '@ckeditor/ckeditor5-font/src/fontfamily';
 import FontSize from '@ckeditor/ckeditor5-font/src/fontsize';
-// import CustomElementPlugin from 'ckeditor5-custom-element/src/customelement';
+import Break from './ssml-tags/break';
 // import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 // import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
-// import imageIcon from '@ckeditor/ckeditor5-core/theme/icons/check.svg';
+// import Icon1 from '@ckeditor/ckeditor5-core/theme/icons/check.svg';
 // import EventEmitter from 'events';
 // import ClickObserver from '@ckeditor/ckeditor5-engine/src/view/observer/clickobserver';
 
@@ -69,7 +69,8 @@ ClassicWaterfordEditor.builtinPlugins = [
 	IndentBlock,
 	List,
 	FontFamily,
-	FontSize
+	FontSize,
+	Break
 ];
 
 // Editor configuration.
@@ -89,6 +90,7 @@ ClassicWaterfordEditor.defaultConfig = {
 			'|',
 			'outdent',
 			'indent',
+			'break'
 		]
 	},
 	image: {

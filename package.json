@@ -1,7 +1,7 @@
 {
-  "name": "@ckeditor/ckeditor5-build-classic",
-  "version": "15.0.0",
-  "description": "The classic editor build of CKEditor 5 – the best browser-based rich text editor.",
+  "name": "ckeditor5-build-classic-waterford",
+  "version": "1.3.1",
+  "description": "The classic editor build of CKEditor 5 for Waterford",
   "keywords": [
     "ckeditor5-build",
     "ckeditor",
@@ -88,7 +88,11 @@
       "pre-commit": "lint-staged"
     }
   },
+  "publishConfig": {
+    "registry": "https://nexus.waterford.org/repository/npm-release/"
+  },
   "dependencies": {
-    "@ckeditor/ckeditor5-font": "^15.0.0"
+    "@ckeditor/ckeditor5-font": "^15.0.0",
+    "@ckeditor/ckeditor5-ui": "^15.0.0"
   }
 }
